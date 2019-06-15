@@ -1,0 +1,78 @@
+* 一
+  A, C, C, A, B,
+  D, A, A, B, C,
+  C, C(此题没有正确答案，正确答案应该是12), D, C, A
+* 二
+B, A, B, A, B,
+A, B, B, B, A
+* 三
+** 3.1
+   20,4
+** 3.2
+   7 8 9
+** 3.3
+   1000 10
+** 3.4
+   2
+** 3.5
+   2,3
+* 四
+** 4.1
+   =a[i][j] + b[i][j]=
+   =printf("\n")=
+** 4.2
+   =a[i]>=a[i+1]=
+** 4.3
+   =break=
+   =getchar()=
+* 五
+** 5.1
+   #+BEGIN_SRC c
+#include <stdio.h>
+void binsearch(int x, int*a, int len) {
+  int low=0, high=len-1, mid;
+  while (low < high) {
+    mid=(low+high)/2;
+    if (a[mid]==x) {
+      printf("pos=%d\n", mid+1);
+      return;
+    }
+    if (a[mid]>x) high=mid-1;
+    else low=mid+1;
+  }
+  if(a[low]==x) printf("pos=%d\n", low+1);
+  else printf("not found!\n");
+}
+int main(void) {
+  int x, a[10]; scanf("%d", &x);
+  for(int i=0; i<10; ++i) a[i] = i+1;
+  binsearch(x, a, 10);
+  return 0;
+}
+   #+END_SRC
+** 5.2
+   #+BEGIN_SRC c
+#include<stdio.h>
+#include<ctype.h>>
+#include<string.h>
+int alpha=0, num=0, space=0, other=0;
+void solve(char *a) {
+  for(int i=0;i<strlen(a);++i) {
+    if(isdigit(a[i])) num++;
+    else if (isalpha(a[i])) alpha++;
+    else if (isspace(a[i])) space++;
+    else other++;
+  }
+}
+int main(void) {
+  char a[100]; gets(a); solve(a);
+  printf("character count is: %d\n"
+         "number count is: %d\n"
+         "space count is: %d\n"
+         "other character count is: %d\n",
+         alpha, num, space, other);
+
+  return 0;
+}
+
+   #+END_SRC
